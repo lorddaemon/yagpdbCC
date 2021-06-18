@@ -1,0 +1,95 @@
+{{ $Namensgebung := "Nicknames dürfen keine beleidigenden oder andere verbotenen oder geschützten Namen oder Namensteile enthalten." }}
+{{ $Avatare := "Avatare dürfen keine pornographischen, rassistischen oder beleidigenden Inhalte beinhalten." }}
+{{ $Umgangston := "Der Umgang mit anderen Discord Benutzern sollte stets freundlich sein. Verbale Angriffe gegen andere User sind strengstens untersagt." }}
+{{ $Gespräche := "Das Mitschneiden von Gesprächen ist auf dem gesamten Server nur nach Absprache mit den anwesenden Benutzern des entsprechenden Channels erlaubt. Willigt ein User nicht der Aufnahme ein, ist die Aufnahme des Gesprächs verboten." }}
+{{ $Sanktionen := "Ein Kick oder Bann ist zu keinem Zeitpunkt unbegründet, sondern soll zum Nachdenken der eigenen Verhaltensweise anregen. Unangebrachte Kicks/Banns müssen den zuständigen Teammitgliedern gemeldet werden." }}
+{{ $Weisungsrecht := "Server Admins, Moderatoren oder anderweitig befugte Teammitgliedern haben volles Weisungsrecht. Das Verweigern einer bestimmten Anweisung kann zu einem Kick oder Bann führen. Für einen Auschluss bedarf es keinerlei Angabe von Gründen." }}
+{{ $Datenschutz := "Private Daten wie Telefonnummern, Adressen, Passwörter und ähnlichem dürfen nicht öffentlich ausgetauscht werden." }}
+{{ $Werbung := "Jegliche Art aktiver Werbung für eigene Zwecke ist verboten, wenn dies nicht vorher mit den Server Eigentümern abgesprochen wurde." }}
+{{ $Hackerangriffe := "Jeder Angriff gegen diesen Server ist strafbar. Dies betrifft vor allem das Flooding mit diversen Programmen und DOS-Attacken." }}
+{{ $DiscordTOS := "Es sind alle Benutzer angehalten, die Discord ToS zu beachten. Sollte ein Regelverstoß von einem Benutzer erkannt werden, ist dieser umgehend einem Teammitglied zu melden." }}
+
+
+{{$cid := .Reaction.ChannelID}}{{$mid := .Reaction.MessageID}}{{$en := .Reaction.Emoji.Name}}
+{{if eq .Message.Author.ID 204255221017214977}}
+	{{if (eq $en "1️⃣")}}
+		{{sendDM (cembed
+		"title" "1️⃣ Namensgebung"
+		"description" "Nicknames dürfen keine beleidigenden oder andere verbotenen oder geschützten Namen oder Namensteile enthalten."
+		"color" 0xde2e43)}}
+		{{deleteMessageReaction $cid $mid .User.ID "1️⃣"}}
+	{{else if (eq $en "2️⃣")}}
+		{{sendDM (cembed
+		"title" "2️⃣ Avatar"
+		"description" "Avatare dürfen keine pornographischen, rassistischen oder beleidigenden Inhalte beinhalten."
+		"color" 0xffd984)}}
+		{{deleteMessageReaction $cid $mid .User.ID "2️⃣"}}
+	{{else if (eq $en "3️⃣")}}
+		{{sendDM (cembed
+		"title" "3️⃣ Umgangston"
+		"description" "Der Umgang mit anderen Discord Benutzern sollte stets freundlich sein. Verbale Angriffe gegen andere User sind strengstens untersagt."
+		"color" 0x55acef)}}
+		{{deleteMessageReaction $cid $mid .User.ID "3️⃣"}}
+	{{else if (eq $en "4️⃣")}}
+		{{sendDM (cembed
+		"title" "4️⃣ Gespräche aufnehmen"
+		"description" "Das Mitschneiden von Gesprächen ist auf dem gesamten Server nur nach Absprache mit den anwesenden Benutzern des entsprechenden Channels erlaubt. Willigt ein User nicht der Aufnahme ein, ist die Aufnahme des Gesprächs verboten."
+		"color" 0x55acef)}}
+		{{deleteMessageReaction $cid $mid .User.ID "4️⃣"}}
+	{{else if (eq $en "5️⃣")}}
+		{{sendDM (cembed
+		"title" "5️⃣ Kicken/Bannen"
+		"description" "Ein Kick oder Bann ist zu keinem Zeitpunkt unbegründet, sondern soll zum Nachdenken der eigenen Verhaltensweise anregen. Unangebrachte Kicks/Banns müssen den zuständigen Teammitgliedern gemeldet werden."
+		"color" 0x55acef)}}
+		{{deleteMessageReaction $cid $mid .User.ID "5️⃣"}}
+	{{else if (eq $en "6️⃣")}}
+		{{sendDM (cembed
+		"title" "6️⃣ Weisungsrecht"
+		"description" "Server Admins, Moderatoren oder anderweitig befugte Teammitgliedern haben volles Weisungsrecht. Das Verweigern einer bestimmten Anweisung kann zu einem Kick oder Bann führen. Für einen Auschluss bedarf es keinerlei Angabe von Gründen."
+		"color" 0x55acef)}}
+		{{deleteMessageReaction $cid $mid .User.ID "6️⃣"}}
+	{{else if (eq $en "7️⃣")}}
+		{{sendDM (cembed
+		"title" "7️⃣ Datenschutz"
+		"description" "Private Daten wie Telefonnummern, Adressen, Passwörter und ähnlichem dürfen nicht öffentlich ausgetauscht werden."
+		"color" 0x55acef)}}
+		{{deleteMessageReaction $cid $mid .User.ID "7️⃣"}}
+	{{else if (eq $en "8️⃣")}}
+		{{sendDM (cembed
+		"title" "8️⃣ Werbung"
+		"description" "Jegliche Art aktiver Werbung für eigene Zwecke ist verboten, wenn dies nicht vorher mit den Server Eigentümern abgesprochen wurde."
+		"color" 0x55acef)}}
+		{{deleteMessageReaction $cid $mid .User.ID "8️⃣"}}
+	{{else if (eq $en "9️⃣")}}
+		{{sendDM (cembed
+		"title" "9️⃣ Hackerangriffe"
+		"description" "Jeder Angriff gegen diesen Server ist strafbar. Dies betrifft vor allem das Flooding mit diversen Programmen und DOS-Attacken."
+		"color" 0x55acef)}}
+		{{deleteMessageReaction $cid $mid .User.ID "9️⃣"}}
+	{{else if (eq $en "🔟")}}
+		{{sendDM (cembed
+		"title" "🔟 Discord ToS"
+		"description" "Es sind alle Benutzer angehalten, die Discord ToS zu beachten. Sollte ein Regelverstoß von einem Benutzer erkannt werden, ist dieser umgehend einem Teammitglied zu melden."
+		"color" 0x55acef)}}
+		{{deleteMessageReaction $cid $mid .User.ID "🔟"}}
+    {{else if (eq $en "✅")}}
+
+        {{sendDM (cembed
+        "title" "✅ Das gesamte Regelwerk"
+        "fields" (cslice 
+            (sdict "name" "§1 Namensgebung" "value" $Namensgebung "inline" false) 
+            (sdict "name" "§2 Avatar" "value" $Avatare "inline" false) 
+            (sdict "name" "§3 Umgangston" "value" $Umgangston "inline" false) 
+            (sdict "name" "§4 Gespräche aufnehmen" "value" $Gespräche "inline" false) 
+            (sdict "name" "§5 Kicken/Bannen" "value" $Sanktionen "inline" false) 
+            (sdict "name" "§6 Weisungsrecht" "value" $Weisungsrecht "inline" false)
+            (sdict "name" "§7 Datenschutz" "value" $Datenschutz "inline" false)
+            (sdict "name" "§8 Werbung" "value" $Werbung "inline" false)
+            (sdict "name" "§9 Hackerangriffe" "value" $Hackerangriffe "inline" false)
+            (sdict "name" "§10 Discord TOS" "value" $DiscordTOS "inline" false)
+
+        ) 
+        "color" 0x55acef)}}
+        {{deleteMessageReaction $cid $mid .User.ID "✅"}}
+    {{end}} 
+{{end}}

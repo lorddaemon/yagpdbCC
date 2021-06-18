@@ -1,0 +1,36 @@
+{{ $channel :=850456881482956868}}
+{{ $Grund := (index .CmdArgs 2)}}
+{{ $User := (index .CmdArgs 0)}}
+{{ $Rolle := (index .CmdArgs 1)}}
+
+
+{{ if (gt (len .CmdArgs) 2) }}
+    {{$allowedRoles := (cslice "<@&850456878508802087>" "<@&850456878508802086>" "<@&850456878508802085>")}}
+     {{$role2 := (index .CmdArgs 1)}}
+     {{if in $allowedRoles $role2}}
+        {{ $role := (reReplace ">" (slice (index $.CmdArgs 1) 3) "") }}
+        {{ range $x := seq 1 (len .CmdArgs) }}
+            {{ $userId := (reReplace ">" (slice (index $.CmdArgs 0) 3) "") }}
+                {{ giveRoleID $userId $role }}
+            {{end}}
+            {{ $dReason := (index .CmdArgs 2)}}
+            {{ $dDuration := (index .CmdArgs 3)}}
+            {{ $dUser := (index .CmdArgs 0)}}
+            {{ $dRole := (index .CmdArgs 1)}}
+                Du hast {{ $dUser }} {{ $dRole }} entfernt!
+                {{ $embed := cembed
+                    "description"  (joinStr " " $dUser "wurde" $dRole "entfernt \n **Grund:** " $dReason)
+                    "color" 9021952
+                    "author" (sdict "name" (joinStr "" .User.Username "#" .User.Discriminator) "url" "" "icon_url" (.User.AvatarURL "512"))
+                    "timestamp"  currentTime
+                }}
+            {{ $id := (sendMessageNoEscapeRetID $channel $embed) }}
+    {{else}}
+        Du bist dazu nicht berechtigt!
+        {{ end }}
+{{ else }}
+    Das geht so: !unwarn \@User \@Rolle "Grund" "Dauer"
+    {{ end }}
+
+{{deleteResponse 5}}
+{{deleteTrigger 5}}

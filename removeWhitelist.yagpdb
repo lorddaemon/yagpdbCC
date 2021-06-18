@@ -1,0 +1,42 @@
+{{ $channel := 850456881482956868 }}
+{{ $blockRole := 850456878508802083 }}
+{{ $whitelistRole := 850456878521516044 }}
+
+{{ if .ExecData }}
+    {{ giveRoleID .user $whitelistRole }}
+    {{ takeRoleID .user $blockRole }}
+{{else}}
+    {{ $args := parseArgs 3 "@User <Dauer> <Grund>"
+        (carg "user" "")
+        (carg "int" "")
+        (carg "string" "")}}
+            {{ giveRoleID .user $blockRole }}
+            {{ takeRoleID .user $whitelistRole }}
+            {{ $sdictToSend := sdict "user" ($args.Get 0) }}
+            {{ $delayInHours := mult ($args.Get 1) 86400 }}
+
+            Du hast {{ (index .CmdArgs 0) }} für die Dauer von {{ ($args.Get 1)}} Tage(n) die Whitelistrolle entzogen!
+            {{ $embed := cembed
+            "description"  (joinStr " " (index .CmdArgs 0) "wurde die Whitelistrolle entzogen. \n\n **Grund:** " ($args.Get 2) " \n** Dauer (Tage): ** " ($args.Get 1))
+            "color" 15158332
+            "author" (sdict "name" (joinStr "" .User.Username "#" .User.Discriminator) "url" "" "icon_url" (.User.AvatarURL "512"))
+            "timestamp"  currentTime
+            }}
+            {{ $id := (sendMessageNoEscapeRetID $channel $embed) }}        
+    {{execCC 22 nil $delayInHours $sdictToSend }}
+{{end}}
+
+
+
+
+
+
+
+{{if with .ExecData}} {{/* Pass an `sdict` to the data to make this easy */}}
+    {{giveRoleID .user $whitelistRole}}
+    {{takeRoleID .user $blockRole}} {{/* .user here will be the "user" field that you pass to the data - `(sdict "user" ($args.Get 0))` */}}
+{{else}}
+    give block
+    take white
+    trigger execCC
+{{end}}

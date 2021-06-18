@@ -1,0 +1,18 @@
+{{ if (gt (len .CmdArgs) 1) }}
+
+{{$allowedRoles := (cslice "<@&850456878508802087>" "<@&850456878508802086>" "<@&850456878508802085>")}}
+ {{$role2 := (index .CmdArgs 0)}}
+
+ {{if in $allowedRoles $role2}}
+	{{ $role := (reReplace ">" (slice (index $.CmdArgs 0) 3) "") }}
+	{{ range $x := seq 1 (len .CmdArgs) }}
+		{{ $userId := (reReplace ">" (slice (index $.CmdArgs $x) 3) "") }}
+		{{ giveRoleID $userId $role }}
+		Du hast <@{{  $userId }}> <@&{{ $role }}> gegeben!
+		{{end}}
+	{{else}}
+	Du bist dazu nicht berechtigt!
+	{{ end }}
+{{ else }}
+	Das geht so: !warn \@Rolle \@User 
+{{ end }}

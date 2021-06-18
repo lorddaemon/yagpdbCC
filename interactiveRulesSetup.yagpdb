@@ -1,0 +1,25 @@
+{{$x := sendMessageRetID nil (cembed
+"title" "Discord Regelwerk"
+"description" `1️⃣ Namensgebung
+
+2️⃣ Avatar
+
+3️⃣ Umgangston
+
+4️⃣ Gespräche aufnehmen
+
+5️⃣ Kicken/Bannen
+
+6️⃣ Weisungsrecht
+
+7️⃣ Datenschutz
+
+8️⃣ Werbung
+
+9️⃣ Hackerangriffe
+
+🔟 Discord ToS
+
+✅ Einmal alles bitte`
+"color" 0xe67e22)}}
+{{addMessageReactions nil $x "1️⃣" "2️⃣" "3️⃣" "4️⃣" "5️⃣" "6️⃣" "7️⃣" "8️⃣" "9️⃣" "🔟" "✅"}}
